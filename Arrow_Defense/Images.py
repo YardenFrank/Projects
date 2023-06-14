@@ -6,7 +6,7 @@ environ['SDL_VIDEO_CENTERED'] = '1'
 pygame.init()
 
 info = pygame.display.Info()
-WIDTH, HEIGHT = info.current_w, info.current_h
+WIDTH, HEIGHT = 1200, 675
 
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 
