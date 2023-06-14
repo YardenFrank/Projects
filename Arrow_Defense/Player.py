@@ -165,13 +165,14 @@ class Player(pygame.sprite.Sprite):
 
     def gravity(self):
         self.update_height()
-        self.y_velocity += 0.7
         self.rect.y += self.y_velocity
         if self.on_ladder():
             self.y_velocity = 0
         elif self.rect.y >= self.height:
             self.rect.y = self.height
             self.y_velocity = 0
+        else:
+            self.y_velocity += 0.7
 
     def update_height(self):
         if ground_y - self.height < WIDTH // 7.5 // 2:
@@ -192,7 +193,7 @@ class Player(pygame.sprite.Sprite):
             return True
 
         elif self.ladder_x[1] * 1.07 > self.collision_rect.x + self.offset.x > self.ladder_x[1] * 0.93:
-            if self.collision_rect.y <= self.height - 1:
+            if self.collision_rect.y < self.height:
                 return False
             if self.collision_rect.y == self.height + HEIGHT // 7.5:
                 self.change_heights('+')
